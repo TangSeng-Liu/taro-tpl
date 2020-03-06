@@ -2,7 +2,8 @@
 
 命令行快速生成模板页面
 npm tpl 'page-name'
-
+命令行快速生成模板组件
+npm comp 'component-name'
 
 # 技术栈
 
