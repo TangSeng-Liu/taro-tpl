@@ -1,102 +1,61 @@
+/* font-size
+-------------------------- */
+@title-font: 32px;
+@price-font: 36px;
+@subtitle-font:28px;
+@info-font:24px;
+@min-font:20px;
+/* margin
+-------------------------- */
+@min-space:14px;
+@space:24px;
+
 /* colors
 -------------------------- */
-
-@color-brand: #f1836f;
-@color-brand-light: #f39b8b;
-@color-brand-dark: #f5735b;
-@color-info: #f39b8b;
-@color-dan: #fbd8d1;
-@color-ex: #bc86bc;
-@color-border-base: #eee;
-//
-@color-primary: #f1836f;
-@color-deep: #f5735b;
-@border: #f1f1f1;
+@color-red: #E02020;
+@color-blue: #41A89C;
 @font-primary: #333;
 @font-default: #666;
 @font-active: #111;
 @font-info: #aaa;
-/* button-colors
--------------------------- */
 
-@btn-active: #f5735b;
-@btn-disabled: #ccc;
-@btn-disabled-else: mix(#fff, @btn-active, 70%);
 /* background-colors
 -------------------------- */
+@bg-color-base: #f5f5f5;
+@bg-color-light: #fff; //页面浅灰背景&图片浅灰背景
 
-@bg-color-base: #f8f8f8;
-@bg-color-light: #ddd; //页面浅灰背景&图片浅灰背景
-@bg-color-danger: #f9efef; //页面浅红背景&按钮边框
-@bg-color-panel: #ec5d75;
-/* tag-colors
--------------------------- */
-
-@tag-primary: #d87182;
-@tag-dark: #555;
 /* methods
 -------------------------- */
-
-// 超出点点点
-.ddd {
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+.flex{
+  display: flex;
 }
-
-// 背景图片地址和大小
-.bg(@url) {
-  background-image: url(@url);
-  background-repeat: no-repeat;
-  background-size: 100% 100%;
-}
-
-// 定位上下左右居中
-.center {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-
-// 定位上下居中
-.ct {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-}
-
-// 定位左右居中
-.cl {
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-}
-
-// 宽高
-.wh(@width, @height) {
-  width: @width;
-  height: @height;
-}
-
-// 字体大小，颜色
-.sc(@size, @color) {
-  font-size: @size;
-  color: @color;
-}
-
 // flex 布局和 子元素 对其方式 flex-start | flex-end | center | space-between | space-around;
 .fj(@type: space-between) {
-  display: flex;
+  .flex();
   justify-content: @type;
 }
-
+.flex_sa(){
+  .fj(space-around);
+}
+// 超出点点点
 .ellipsis(@clamp: 1){
   display: -webkit-box;
   overflow: hidden;
   text-overflow: ellipsis;
   word-wrap: break-word;
   white-space: normal !important;
+  // ↓↓↓  不要删除下面这行注释  ↓↓↓
+  /* autoprefixer: ignore next */
   -webkit-box-orient: vertical;
   -webkit-line-clamp: @clamp;
+}
+.flex_center{
+  .flex();
+  justify-content: center;
+  align-items: center;
+}
+.text_center{
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
 }

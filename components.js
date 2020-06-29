@@ -13,9 +13,9 @@ if (!dirName) {
 }
 
 // 页面模版
-const indexTep = `import Taro from '@tarojs/taro';
-import { View } from '@tarojs/components';
-import './index.less';
+const indexTep = `import Taro from '@tarojs/taro'
+import { View } from '@tarojs/components'
+import './index.less'
 
 function ${titleCase(dirName)} (porps) {
   return (
@@ -29,14 +29,14 @@ export default  ${titleCase(dirName)}
 
 // less文件模版
 const lessTep = `
-@import "../../static/css/mixin.less";
+@import "~@/static/css/mixin.less";
 .${dirName}-comp {
 
 }
 `;
 
 // 导出页面模板
-const exportTep = `export { default as ${dirName} } from './${dirName}'
+const exportTep = `export { default as ${titleCase(dirName)} } from './${dirName}'
 // 模板自动生成占位 勿删`;
 
 try {
@@ -49,11 +49,11 @@ fs.writeFileSync(`./src/components/${dirName}/index.tsx`, indexTep);
 fs.writeFileSync(`./src/components/${dirName}/index.less`, lessTep);
 
 
-const exportComp = fs.readFileSync(`./src/components/index.tsx`, 'utf8');
+const exportComp = fs.readFileSync(`./src/components/index.ts`, 'utf8');
 
 if (!exportComp.includes(`export { default as ${dirName} }`)) {
   const newExport = exportComp.replace(/\/\/ 模板自动生成占位 勿删/, exportTep);
-  fs.writeFileSync('./src/components/index.tsx', newExport);
+  fs.writeFileSync('./src/components/index.ts', newExport);
 }
 
 console.log(`组件${dirName}已创建 enjoy`);

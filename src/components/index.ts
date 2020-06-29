@@ -1,0 +1,11 @@
+export { default as ColumnGoods } from './ColumnGoods'
+export { default as NavBar } from './NavBar'
+export { default as RowGoods } from './RowGoods'
+export { default as Discount } from './Discount'
+export { default as Img } from './Img'
+export { default as TabBar } from './TabBar'
+export { default as Check } from './check'
+export { default as Num } from './num'
+export { default as Modal } from './Modal'
+export { default as LoginModal } from './loginModal'
+// 模板自动生成占位 勿删

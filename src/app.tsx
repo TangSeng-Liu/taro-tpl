@@ -4,6 +4,7 @@ import { Provider } from "@tarojs/redux";
 import dva from './utils/dva'
 import models from './models'
 import 'taro-ui/dist/style/index.scss'
+import "taro-ui/dist/style/components/icon.scss"
 import './app.less'
 
 // 如果需要在 h5 环境中开启 React Devtools
@@ -19,11 +20,30 @@ const dvaApp = dva.createApp({
 
 const store = dvaApp.getStore();
 class App extends Component {
-
-  componentDidMount () {}
+  
+  async componentDidMount () {
+    Taro.getSystemInfo({}).then(res  => {
+      store.dispatch({type:'common/save',payload: {
+        statusBarHeight: res.statusBarHeight
+      }})
+    })
+    const updateManager = Taro.getUpdateManager()
+    updateManager.onUpdateReady(function () {
+      Taro.showModal({
+        title: '更新提示',
+        content: '新版本已经准备好，是否重启应用？',
+        success: function (res) {
+          if (res.confirm) {
+            // 新的版本已经下载好，调用 applyUpdate 应用新版本并重启
+            updateManager.applyUpdate()
+          }
+        }
+      })
+    })
+  }
 
   componentDidShow () {}
-
+  
   componentDidHide () {}
 
   componentDidCatchError () {}
@@ -42,9 +62,25 @@ class App extends Component {
     window: {
       backgroundTextStyle: 'light',
       navigationBarBackgroundColor: '#fff',
-      navigationBarTitleText: 'WeChat',
-      navigationBarTextStyle: 'black'
-    }
+      navigationBarTitleText: '中通积分商城',
+      navigationStyle: 'custom'
+    },
+    tabBar: {
+      custom: true,
+      color: '#333',
+      selectedColor: "#247AFF",
+      backgroundColor: "#fff",
+      list: [
+        {
+          pagePath: 'pages/index/index',
+          text: '首页'
+        },
+        {
+          pagePath: 'pages/index/index',
+          text: '测试'
+        }
+      ]
+    },
   }
 
   // 在 App 类中的 render() 函数没有实际作用

@@ -1,6 +1,7 @@
+const path = require('path')
 const config = {
-  projectName: 'taro-tpl',
-  date: '2020-3-6',
+  projectName: 'jlb-shop',
+  date: '2020-5-19',
   designWidth: 750,
   deviceRatio: {
     '640': 2.34 / 2,
@@ -19,10 +20,20 @@ const config = {
     plugins: [
       'transform-decorators-legacy',
       'transform-class-properties',
-      'transform-object-rest-spread'
+      'transform-object-rest-spread',
+      ['transform-runtime', {
+        'helpers': false,
+        'polyfill': false,
+        'regenerator': true,
+        'moduleName': 'babel-runtime'
+      }]
     ]
   },
   plugins: [],
+  alias: {
+    '@': path.resolve(__dirname, '..', 'src'),
+    '@/components': path.resolve(__dirname, '..', 'src/components')
+  },
   defineConstants: {
   },
   mini: {
@@ -49,6 +60,7 @@ const config = {
   h5: {
     publicPath: '/',
     staticDirectory: 'static',
+    esnextModules: ['taro-ui'],
     postcss: {
       autoprefixer: {
         enable: true,

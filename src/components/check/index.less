@@ -1,0 +1,44 @@
+
+@import "~@/static/css/mixin.less";
+.Check-comp {
+  .fj(center);
+  height: 100%;
+  align-items: center;
+  .at-icon {
+    display: inline-block;
+    font-family: iconfont;
+    font-style: normal;
+    font-weight: 400;
+    font-variant: normal;
+    text-transform: none;
+    text-rendering: auto;
+    line-height: 1;
+    -webkit-font-smoothing: antialiased;
+    vertical-align: middle;
+  }
+  .at-checkbox__icon-cnt {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 0;
+    margin-right: 20px;
+    width: 40px;
+    min-width: 40px;
+    height: 40px;
+    color: transparent;
+    font-size: 24px;
+    line-height: 1;
+    border: 2px solid rgba(97, 144, 232, 0.2);
+    border-radius: 50%;
+    background-color: #FFF;
+    box-sizing: border-box;
+    transition: all 0.2s; 
+  }
+  .at-icon-check::before {
+    content: "\e95e"; 
+  }
+  .at-checkbox__option--selected.at-checkbox__icon-cnt {
+    color: #FFF;
+    border: none;
+  }
+}

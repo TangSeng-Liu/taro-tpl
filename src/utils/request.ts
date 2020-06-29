@@ -1,44 +1,44 @@
-import Taro from '@tarojs/taro';
-import { baseUrl, noConsole } from '../config';
-import interceptors from './interceptors';
-interceptors.forEach((interceptorItem) => Taro.addInterceptor(interceptorItem));
+import Taro, { getStorageSync } from '@tarojs/taro'
+import { baseUrl } from '@/utils/baseUrl'
+const noConsole = true
+
 
 interface OptionsType {
-  method: 'GET' | 'POST' | 'PUT';
-  data: any;
-  url: string;
-  noLoading?: boolean;
+  method: 'GET' | 'POST' | 'PUT'
+  data?: any
+  url: string
 }
-export default (options: OptionsType = { method: 'GET', data: {}, url: '', noLoading: false }) => {
-  if (!options.noLoading) {
-    Taro.showLoading({
-      title: '加载中'
-    });
-  }
+export default ({url= '', data = {}, method = 'GET'  }: OptionsType) => {
+  
   if (!noConsole) {
-    console.log(`${new Date().toLocaleString()}【 URL=${options.url} 】PARAM=${JSON.stringify(options.data)}`);
+    console.log(`${new Date().toLocaleString()}【 URL=${url} 】PARAM=${JSON.stringify(data)}`);
   }
-  for (const key in options.data) {
-    if (options.data.hasOwnProperty(key) && (options.data[key] === undefined || options.data[key] == null)) {
-      delete options.data[key];
+  if(data){
+    for (const key in data) {
+      if (data.hasOwnProperty(key) && (data[key] === undefined || data[key] == null)) {
+        delete data[key];
+      }
     }
   }
-  return Taro.request({
-    url: baseUrl + options.url,
-    data: {
-      ...options.data
-    },
-    header: {
-      'X-Token': Taro.getStorageSync('token'),
-      'Content-Type': 'application/json'
-    },
-    method: options.method
-  }).then((res) => {
-    setTimeout(() => {
-      Taro.hideLoading();
-    }, 100);
-    if (!noConsole) {
-      console.log(`${new Date().toLocaleString('zh', { hour12: false })}【${options.url} 】【返回】`, res.data);
-    }
-  });
+  return new Promise((resolve, reject) => {
+    Taro.request({
+      url: baseUrl + url,
+      data: data,
+      header: {
+        'Content-Type': 'application/json',
+        'token': getStorageSync('token'),
+      },
+      method: method,
+      success: res => {
+        if (res.data.code == 10000) {
+          resolve(res.data.data)
+        } else {
+          reject(res.data)
+        }
+      },
+      fail: res => {
+        reject(res)
+      }
+    })
+  })
 };

@@ -1,0 +1,54 @@
+
+@import '../../static/css/mixin.less';
+.ciscount-comp {
+  .fj(space-between);
+  flex-wrap: wrap;
+  .ciscount-box{
+    .fj(space-between);
+    align-content: center;
+    width: 144px;
+    height: 32px;
+    font-size: 20px;
+    overflow: hidden;
+    line-height: 32px;
+    text-align: center;
+    border-radius: 6px;
+    margin-bottom: 12px;
+    .explain{
+      width: 72px;
+    }
+    .money{
+      min-width: 66px;
+      position: relative;
+      color: #fff;
+      padding-right: 6px;
+    }
+    .money::before{
+      content: '';
+      position: absolute;
+      height: 12px;
+      width: 12px;
+      background-color: #fff;
+      right: -6px;
+      top: 10px;
+      border-radius: 50%;
+      z-index: 10;
+    }
+  }
+  .color(@bg, @color, @moneybg) {
+    background-color: @bg;
+    color: @color;
+    .money{
+      background:@moneybg
+    };
+  }
+  .integral{
+    .color(#FFEFD7, #AE6E11, linear-gradient(180deg,rgba(243,217,166,1) 0%,rgba(202,153,84,1) 100%))
+  }
+  .cashback{
+    .color( #E5EFFF, #546ED2, linear-gradient(180deg,rgba(121,175,251,1) 0%,rgba(67,97,215,1) 100%))
+  }
+  .friend{
+    .color( #FFEFF2, #FF0F32, linear-gradient(180deg,rgba(255,136,153,1) 0%,rgba(255,29,62,1) 100%))
+  }
+}

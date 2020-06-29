@@ -1,0 +1,56 @@
+
+@import '~@/static/css/mixin.less';
+
+.columnGoods-comp{
+  margin-bottom: 24px;
+  background: #fff;
+  border-radius: 12px;
+  overflow: hidden;
+  &.shadow{
+    box-shadow: 8px 8px 8px 0px rgba(0,0,0,0.05);
+  }
+  .img_box{
+    position: relative;
+    overflow: hidden;
+  }
+  .content_box{
+    padding:0 12px 4px;
+    position: relative;
+    .title{
+      .ellipsis(1);
+      font-size: @title-font;
+      margin-top: @min-space;
+      line-height: 1.4;
+      font-size: 30px;
+      color: #333;
+    }
+    .flex{
+      .flex();
+      align-items: center;
+      margin: 8px 0;
+    }
+    .red{
+      color: @color-red;
+      font-size: @info-font;
+      .price{
+        font-size: @price-font;
+        font-weight: bold;
+      }
+    }
+    .sales{
+      font-size: @min-font;
+      margin-left: @min-space;
+    }
+  }
+}
+
+.block_active{
+  animation: touch .15s ease-out both;
+}
+@keyframes touch {
+  50% {
+    box-shadow: none;
+    opacity: .75;
+    transform: translateY(2px);
+  }
+}

@@ -1,0 +1,69 @@
+@import '~@/static/css/mixin.less';
+.at-countdown__time-box{
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  min-width: auto;
+}
+.at-countdown__separator{
+  font-size: inherit;
+  padding: 0 2px;
+  line-height: 1;
+}
+.row-comp{
+  .flex();
+  flex: 1 1 100%;
+  flex-shrink: 0;
+  background-color: #fff;
+  margin-bottom: 24px;
+  overflow: hidden;
+  .image_box{
+    position: relative;
+    overflow: hidden;
+    flex-shrink: 0;
+    .imgTag{
+      width:72px;
+      height:34px;
+      background:linear-gradient(270deg,rgba(253,60,60,1) 0%,rgba(255,94,0,1) 100%);
+      border-radius:12px 0px 12px 0px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      color: #fff;
+      font-size: @info-font;
+      line-height: 34px;
+      text-align: center;
+    }
+  }
+  .goods_info{
+    .flex();
+    flex-direction: column;
+    flex:1;
+    .title_box{
+      .flex();
+      align-items: center;
+      &.bg{
+        background-size: 32px 32px;
+        background-repeat: no-repeat;
+        text-indent: 1rem;
+        background-position:left 6px;
+      }
+      .title_icon{
+        flex-shrink: 0;
+        width: 32px;
+        height: 32px;
+        margin-right: 4px;
+      }
+      .title{
+        .ellipsis(2);
+        line-height: 1.4;
+        font-weight: 400;
+        font-size: @subtitle-font;
+        color: #333;
+      }
+    }
+    .tag_box{
+      margin-bottom: auto;
+    }
+  }
+}

@@ -1,3 +1,438 @@
+@import "../../static/css/mixin.less";
+page{
+  background-color: @bg-color-base;
+  background-repeat: no-repeat;
+  background-size: 100% auto;
+}
 .page-index{
-  
+  /* 签到弹窗
+  -----------------------------*/
+  .at-curtain__container {
+    width: 100%;
+  }
+  .at-curtain__btn-close {
+    display: none;
+  }
+  .sign_banner_box{
+    .flex();
+    flex-direction: column;
+    width: 100%;
+    .sign_img{
+      width: 100%;
+    }
+    .sign_banner{
+      width: 100%;
+      // position: absolute;
+      text-align: center;
+      font-size: 24px;
+      .red_wrap{
+        font-size: 32px;
+        .red_value{
+          font-size: 100px;
+          font-family: 'DINCond-Black';
+        }
+      }
+    } 
+  }
+  .redPacket_wrap{
+    height: 814px;
+    background: url(https://ztjf-mall.oss-cn-hangzhou.aliyuncs.com/jlb/index/hbtc_pic%403x.png);
+    background-size: 100% 100%;
+    color:#E02020;
+    .tips{
+      margin: 250px 0 10px 0;
+    }
+  }
+  .point_wrap{
+    height: 814px;
+    background: url(https://ztjf-mall.oss-cn-hangzhou.aliyuncs.com/jlb/index/jftc_pic30%403x.png);
+    background-size: 100% 100%;
+    color: #fff;
+    .tips{
+      margin: 470px 0 10px 0;
+    }
+  }
+  .banner_point_box{
+    width: 100%;
+    text-align: center;
+    color: #fff;
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: @space;
+    .point{
+      color: #FFF100;
+      font-size: 74px;
+      margin: 0 6px;
+      line-height: 1;
+    }
+    &.active{
+      position: absolute;
+    }
+  }
+  .point_body{
+    width:576px;
+    height:380px;
+    margin: auto;
+    padding-bottom: 44px;
+    background:rgba(255,255,255,1);
+    border-radius:24px;
+    text-align: center;
+    .fj();
+    flex-direction: column;
+    align-items: center;
+    .point{
+      color: @color-red;
+      font-size: 80px;
+      // font-weight: bold;
+      font-family: 'DINCond-Black';
+    }
+    .icon{
+      margin-top: -180px;
+      height: 360px;
+      width: 360px;
+    }
+    .btn{
+      .text_center();
+      width:500px;
+      height:66px;
+      background:rgba(65,168,156,1);
+      border-radius: 25PX;
+      color: #fff;
+      font-size: @title-font;
+    }
+  }
+  .tag_box{
+    .flex();
+    flex-wrap: wrap;
+    margin-top: 6px;
+    height: 40px;
+    overflow: hidden;
+    .tag{
+      padding: 4px 12px;
+      color: @color-blue;
+      background:rgba(65,168,156,.2);
+      border-radius: 25PX;
+      font-size: 20px;
+      margin-right: 12px;
+      margin-bottom: 10px;
+    }
+  }
+  .price_info_box{
+    font-size: 24px;
+    line-height: 1;
+    
+    .top_box{
+      .fj();
+      align-items: center;
+      .sales{
+        color: #999;
+      }
+      margin-bottom: 12px;
+    }
+    .bottom_box{
+      .fj();
+      align-items: flex-end;
+      .goods_class{
+      }
+      .org_price{
+        color: #999;
+        text-decoration:line-through;
+      }
+    }
+  }
+  /* Tab头部导航
+  ------------------------------------------*/
+  .tab_head{
+    .flex();
+    background-color: #fff;
+    position: relative;
+    margin: 40px 0 24px;
+    .list_item{
+      .flex();
+      transition: color .3s;
+      &.active{
+        color: @color-blue;
+        font-weight: bold;
+      }
+      font-size: @subtitle-font;
+      justify-content: center;
+      align-items: center;
+      line-height: 1;
+      padding-bottom: 30px;
+      color: #333;
+    }
+    .tabs_line{
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      z-index: 1;
+      border-radius: 2px;
+      transition-duration: 0.3s;
+      .line{
+        width: 36px;
+        height: 4px;
+        margin: auto;
+        background-color: @color-blue;
+      }
+    }
+  }
+  .column_list{
+    .points_box{
+      padding: 8px;
+      border-radius: 4px;
+      background:rgba(255,119,27,.1);
+      color: #FF771B;
+      font-size: 20px;
+    }
+    .fj();
+    flex-wrap: wrap;
+    .price_box{
+      color: @color-red;
+      font-size: @info-font;
+      .price{
+        font-size: @title-font;
+        font-weight: bold;
+      }
+    }
+    .title{
+      .ellipsis(1);
+      font-size: @info-font;
+      margin-bottom: @min-space;
+      color: #333;
+    }
+  }
+  /* 顶部背景
+  ------------------------------------------*/
+  .top_bg{
+    position: absolute;
+    top: 0;
+    height: 100vw;
+    left: 0;
+    width: 100vw;
+    z-index: -1;
+    overflow: hidden;
+    transition: all 1s;
+    .ty{
+      position: absolute;
+      bottom: 0;
+      height: 340px;
+      border-radius: 50%;
+      left: -100px;
+      right: -100px;
+      background-color: #fff;
+    }
+  }
+  .white_box{
+    background-color: #fff;
+    border-radius: 16px;
+    margin: 0 @space @space;
+    padding: @space;
+  }
+  .title_box{
+    .flex();
+    color: #333333;
+    align-items: flex-end;
+    line-height: 1;
+    margin-bottom: @space;
+    .title{
+      font-size: @title-font;
+      font-weight: bold;
+    }
+    .subtitle{
+      font-size: @info-font;
+      margin-left: 16px;
+    }
+    .more{
+      font-size: @info-font;
+      margin-left: auto;
+      color: #999;
+    }
+  }
+
+  .banner_box{
+    display: block;
+    width: auto;
+    height:160px;
+    background:#fff;
+    border-radius:16px;
+    overflow: hidden;
+    margin: @space;
+  }
+  .swiper_h{
+    width: 750px; 
+    height: 400px;
+    .swiper_box{
+      margin: 0 @space;
+      border-radius: 16px;
+      overflow: hidden;
+      transform: scale(.8);
+      &.big{
+        animation: aniBig 3s both;
+      }
+    }
+  }
+  @keyframes aniBig {
+    from, to, 10% {
+      transform: scale(.8);
+    }
+    20%, 90% {
+      transform: scale(1);
+    }
+  }
+  .headenter_box{
+    .fj();
+    color: #000;
+    font-size: @info-font;
+    line-height: 1;
+    .item{
+      flex: 0 0 20%;
+      text-align: center;
+      .icon{
+        width: 100px;
+        height: 100px;
+      }
+    }
+  }
+  .goods_headenter{
+    margin: 40px 24px 0;
+    .fj();
+    // margin: @space;
+    .img{
+      width: 135px;
+      height: 135px;
+    }
+  }
+  /* 签到
+  -----------------------------------------------*/
+  .signin_box{
+    background-color: #fff;
+    padding: 24px 24px 68px;
+    margin-bottom: 80px;
+    position: relative;
+    .sign_info{
+      .fj();
+      align-items: flex-end;
+      margin-bottom: @space;
+      color: #333;
+      .info_box{
+        .flex();
+        align-items: flex-end;
+        line-height: 1.4;
+        .signDays{
+          line-height: 1;
+          font-size: 50px;
+          color: @color-blue;
+          margin: 0 10px;
+        }
+      }
+      .myPoints{
+        font-size: 22px;
+        line-height: 30px;
+        .flex();
+        .imgWrap{
+          padding: 4px 4px 0 0;
+          .pointsIcon{
+            width: 20px;
+            height: 20px;
+          }
+        }
+        .points{
+          font-size: 24px;
+        }
+      }
+    }
+    .days_box{
+      .fj();
+      position: relative;
+      text-align: center;
+      .dayNum{
+        margin-top: @min-space;
+        font-size: @info-font;
+        color: #999;
+      }
+      .days_list{
+        &.gray{
+          .days{
+            background:#F5F5F5;
+            font-size: 20px;
+            font-weight: 400;
+            color: #ccc;
+          }
+          .dayNum{
+            color: #ccc;
+          }
+        }
+        &.active{
+          .days{
+            transform: scale(1.15);
+            background-color: #FFD733;
+            color: #fff;
+          }
+          .dayNum{
+            font-size: 24px;
+            color: #333;
+            font-weight: bold;
+          }
+        }
+      }
+      .days{
+        .flex_center();
+        flex-direction: column;
+        width:84px;
+        height:100px;
+        background:rgba(245,245,245,1);
+        border-radius:8px;
+        font-size: 20px;
+        color: #999;
+        &.libao{
+          background:url(https://ztjf-mall.oss-cn-hangzhou.aliyuncs.com/alipay/base/dlb_icon.png) no-repeat;
+          background-size: 100% 100%;
+        }
+      }
+    }
+    .signin_btn{
+      transition: all .3s;
+      width:256px;
+      height:86px;
+      border:none;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .15);
+      background-color: @color-blue;
+      background-size: 100% 100%;
+      border-radius:25PX;
+      color: #fff;
+      font-weight: bold;
+      font-size: @title-font;
+      text-align: center;
+      line-height: 86px;
+      position: absolute;
+      left: 50%;
+      right: 50%;
+      transform: translateX(-50%);
+      bottom: -43px;
+      &.active{
+        transform: translateY(2px) translateX(-50%);
+        box-shadow: none;
+      }
+      &.gray{
+        background-image: none;
+        background-color: #BEBEBE !important;
+      }
+    }
+  }
+}
+// 积分兑换
+.point_list::after {
+    content: "";
+    width: 210rpx;
+ }
+
+button::after{
+  border:none;
+}
+.at-load-more{
+  height:90px;
+}
+.at-load-more__tip{
+  color: #ccc;
+  font-size: 24px;
 }

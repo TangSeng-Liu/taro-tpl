@@ -13,12 +13,11 @@ if (!dirName) {
 }
 
 // 页面模版
-const indexTep = `import Taro, { useState } from '@tarojs/taro';
-import { useDispatch, useSelector } from '@tarojs/redux';
-import { View } from '@tarojs/components';
-import './index.less';
-
-function ${titleCase(dirName)} (porps) {
+const indexTep = `import Taro, { useState } from '@tarojs/taro'
+import { useDispatch, useSelector } from '@tarojs/redux'
+import { View } from '@tarojs/components'
+import './index.less'
+function ${titleCase(dirName)} () {
   const dispatch = useDispatch()
   const ${dirName}State = useSelector<any, any>(state => state.${dirName})
   return (
@@ -42,7 +41,7 @@ const lessTep = `
 `;
 
 // model文件模版
-const modelTep = `import * as Api from '../service/apiService';
+const modelTep = `import * as Api from '../service/apiService'
 export default {
   namespace: '${dirName}',
   state: {
